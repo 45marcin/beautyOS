@@ -1,0 +1,49 @@
+=============== Build summary ===============
+Building Debian bullseye for imx8mm-var-dart
+Building Debian bullseye for imx8mm-var-dart
+U-Boot config:      imx8mm_var_dart_defconfig
+Kernel config:      imx8_var_defconfig
+Default kernel dtb: imx8mm-var-dart.dtb
+kernel dtbs:        
+       freescale/imx8mm-var-dart-dt8mcustomboard.dtb
+       freescale/imx8mm-var-dart-dt8mcustomboard-legacy.dtb
+       freescale/imx8mm-var-som-symphony.dtb
+       freescale/imx8mm-var-som-symphony-legacy.dtb
+       freescale/imx8mm-var-dart-dt8mcustomboard-m4.dtb
+       freescale/imx8mm-var-dart-dt8mcustomboard-legacy-m4.dtb
+       freescale/imx8mm-var-som-symphony-m4.dtb
+       freescale/imx8mm-var-som-symphony-legacy-m4.dtb
+=============================================
+
+I: Command: "all" start...
+I: Make U-Boot: imx8mm_var_dart_defconfig
+make: *** /home/marcin/Documents/GitHub/beautyOS/src/uboot: No such file or directory.  Stop.
+make: *** /home/marcin/Documents/GitHub/beautyOS/src/uboot: No such file or directory.  Stop.
+make: *** /home/marcin/Documents/GitHub/beautyOS/src/uboot: No such file or directory.  Stop.
+make: *** /home/marcin/Documents/GitHub/beautyOS/src/uboot: No such file or directory.  Stop.
+cp: cannot stat '/home/marcin/Documents/GitHub/beautyOS/src/uboot/tools/env/fw_printenv': No such file or directory
+./var_make_debian.sh: line 592: cd: /home/marcin/Documents/GitHub/beautyOS/src/imx-atf: No such file or directory
+make: *** No rule to make target 'bl31'.  Stop.
+./var_make_debian.sh: line 595: cd: OLDPWD not set
+cp: cannot stat '/home/marcin/Documents/GitHub/beautyOS/src/imx-atf/build/imx8mm/release/bl31.bin': No such file or directory
+cp: cannot create regular file 'src/imx-mkimage/iMX8M/': No such file or directory
+cp: cannot create regular file 'src/imx-mkimage/iMX8M/': No such file or directory
+cp: cannot create regular file 'src/imx-mkimage/iMX8M/': No such file or directory
+cp: cannot create regular file 'src/imx-mkimage/iMX8M/': No such file or directory
+cp: cannot create regular file 'src/imx-mkimage/iMX8M/': No such file or directory
+cp: cannot create regular file 'src/imx-mkimage/iMX8M/': No such file or directory
+cp: cannot create regular file 'src/imx-mkimage/iMX8M/': No such file or directory
+cp: cannot create regular file 'src/imx-mkimage/iMX8M/': No such file or directory
+cp: cannot stat '/home/marcin/Documents/GitHub/beautyOS/src/uboot/u-boot.bin': No such file or directory
+cp: cannot stat '/home/marcin/Documents/GitHub/beautyOS/src/uboot/u-boot-nodtb.bin': No such file or directory
+cp: cannot stat '/home/marcin/Documents/GitHub/beautyOS/src/uboot/spl/u-boot-spl.bin': No such file or directory
+cp: cannot stat '/home/marcin/Documents/GitHub/beautyOS/src/uboot/arch/arm/dts/imx8mm-var-dart-customboard.dtb': No such file or directory
+cp: cannot stat '/home/marcin/Documents/GitHub/beautyOS/src/uboot/arch/arm/dts/imx8mm-var-som-symphony.dtb': No such file or directory
+cp: cannot stat '/home/marcin/Documents/GitHub/beautyOS/src/uboot/tools/mkimage': No such file or directory
+./var_make_debian.sh: line 625: cd: /home/marcin/Documents/GitHub/beautyOS/src/imx-mkimage: No such file or directory
+make: *** No rule to make target 'flash_lpddr4_ddr4_evk'.  Stop.
+cp: cannot stat '/home/marcin/Documents/GitHub/beautyOS/src/imx-mkimage/iMX8M/flash.bin': No such file or directory
+cp: cannot stat 'imx-boot-sd.bin': No such file or directory
+
+I: Command: "all" end.
+
