@@ -83,7 +83,7 @@
 	phy-reset-duration = <10>;
 	phy-reset-post-delay = <20>;
 	phy-reset-on-resume;
-	status = "okay";
+	status = "disabled";
 
 	mdio {
 		#address-cells = <1>;
@@ -541,7 +541,7 @@
 	pinctrl-1 = <&pinctrl_i2c3_gpio>;
 	scl-gpios = <&gpio5 18 GPIO_ACTIVE_HIGH>;
 	sda-gpios = <&gpio5 19 GPIO_ACTIVE_HIGH>;
-	status = "okay";
+	status = "disabled";
 
 	wm8904: audio-codec@1a {
 		compatible = "wlf,wm8904";

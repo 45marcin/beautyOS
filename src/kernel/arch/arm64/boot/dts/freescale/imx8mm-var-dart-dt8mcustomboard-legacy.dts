@@ -31,11 +31,46 @@
 	};
 
 	leds {
-		emmc {
-			label = "eMMC";
+		emmc { /*red*/
+			label = "eMMC2";
 			linux,default-trigger = "heartbeat";
-			gpios = <&gpio4 18 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio4 27 GPIO_ACTIVE_HIGH>;
 		};
+		
+		emmc2 { /*green*/
+			label = "eMMC3";
+			gpios = <&gpio4 25 GPIO_ACTIVE_HIGH>;
+		};
+		/*
+		emmc3 { /*blue*//*
+			label = "eMMC4";
+			gpios = <&gpio4 24 GPIO_ACTIVE_HIGH>;
+		};
+*/
+		emmc3 { /*cam1 i2c*/
+			label = "cam_1_i2c";
+			gpios = <&gpio5 19 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
+		};
+
+		emmc4 { /*blue*/
+			label = "cam_on";
+			gpios = <&gpio3 21 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
+		};
+
+		emmc5 { /*blue*/
+			label = "cam_1_reset";
+			gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+		emmc6 { /*blue*/
+			label = "cam_1_stby";
+			gpios = <&gpio1 22 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
 	};
 
 	can0_osc: can0_osc {
@@ -67,6 +102,8 @@
 	pinctrl-0 = <&pinctrl_pcie0>;
 	reset-gpio = <&gpio4 7 GPIO_ACTIVE_LOW>;
 };
+
+
 
 &i2c4 {
 	/delete-node/ pca6408_1;
@@ -102,10 +139,13 @@
 
 	pinctrl_leds: ledgrp {
 		fsl,pins = <
-			MX8MM_IOMUXC_SAI1_RXD1_GPIO4_IO3		0x1c6
-			MX8MM_IOMUXC_SAI1_TXD2_GPIO4_IO14		0x1c6
-			MX8MM_IOMUXC_SAI1_RXD2_GPIO4_IO4		0x1c6
-			MX8MM_IOMUXC_SAI1_TXD5_GPIO4_IO17		0x1c6
+			MX8MM_IOMUXC_SAI5_RXD0_GPIO3_IO21 		0x1c6
+			MX8MM_IOMUXC_SAI2_MCLK_GPIO4_IO27		0x1c6
+            MX8MM_IOMUXC_SAI2_TXC_GPIO4_IO25		0x1c6
+            MX8MM_IOMUXC_SAI2_TXFS_GPIO4_IO24		0x1c6
+			MX8MM_IOMUXC_SAI5_RXD0_GPIO3_IO21		0x1c6
+			MX8MM_IOMUXC_GPIO1_IO00_GPIO1_IO0		0x1c6	
+			MX8MM_IOMUXC_ENET_TX_CTL_GPIO1_IO22		0x1c6
 		>;
 	};
 
