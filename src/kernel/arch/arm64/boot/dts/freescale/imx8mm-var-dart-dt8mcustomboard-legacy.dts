@@ -53,6 +53,12 @@
 			default-state = "on";
 		};
 
+		emmc32 { /*cam1 i2c*/
+			label = "cam_2_i2c";
+			gpios = <&gpio5 18 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
 		emmc4 { /*blue*/
 			label = "cam_on";
 			gpios = <&gpio3 21 GPIO_ACTIVE_HIGH>;
@@ -62,13 +68,13 @@
 		emmc5 { /*blue*/
 			label = "cam_1_reset";
 			gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
-			default-state = "off";
+			default-state = "on";
 		};
 
 		emmc6 { /*blue*/
 			label = "cam_1_stby";
 			gpios = <&gpio1 22 GPIO_ACTIVE_HIGH>;
-			default-state = "off";
+			default-state = "on";
 		};
 
 	};
@@ -146,6 +152,7 @@
 			MX8MM_IOMUXC_SAI5_RXD0_GPIO3_IO21		0x1c6
 			MX8MM_IOMUXC_GPIO1_IO00_GPIO1_IO0		0x1c6	
 			MX8MM_IOMUXC_ENET_TX_CTL_GPIO1_IO22		0x1c6
+			MX8MM_IOMUXC_I2C3_SCL_GPIO5_IO18		0x1c6
 		>;
 	};
 
