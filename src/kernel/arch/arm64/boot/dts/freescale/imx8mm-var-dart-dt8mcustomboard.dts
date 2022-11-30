@@ -69,12 +69,6 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_leds>;
 		status = "okay";
-
-		emmc {
-			label = "eMMC";
-			linux,default-trigger = "mmc2";
-			gpios = <&gpio4 18 GPIO_ACTIVE_HIGH>;
-		};
 	};
 
 	pcie0_refclk: pcie0-refclk {
@@ -495,7 +489,9 @@
 
 	pinctrl_leds: ledgrp {
 		fsl,pins = <
-			MX8MM_IOMUXC_SAI1_TXD6_GPIO4_IO18		0x1c6
+		MX8MM_IOMUXC_SAI2_MCLK_GPIO4_IO27          0x1c6
+		MX8MM_IOMUXC_SAI2_TXC_GPIO4_IO25           0x1c6
+		MX8MM_IOMUXC_SAI2_TXFS_GPIO4_IO24          0x1c6
 		>;
 	};
 

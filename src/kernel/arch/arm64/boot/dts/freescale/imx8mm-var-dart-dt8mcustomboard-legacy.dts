@@ -32,7 +32,9 @@
 
 	leds {
 		emmc {
-			gpios = <&gpio4 17 GPIO_ACTIVE_HIGH>;
+			label = "eMMC";
+			linux,default-trigger = "heartbeat";
+			gpios = <&gpio4 18 GPIO_ACTIVE_HIGH>;
 		};
 	};
 
@@ -60,6 +62,7 @@
 };
 
 &pcie0 {
+	status="disabled";
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_pcie0>;
 	reset-gpio = <&gpio4 7 GPIO_ACTIVE_LOW>;
