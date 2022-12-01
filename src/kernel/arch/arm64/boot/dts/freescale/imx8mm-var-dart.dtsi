@@ -228,6 +228,21 @@
 		>;
 	};
 
+	pinctrl_pwm3: pwm3grp {
+		fsl,pins = <
+			
+			MX8MM_IOMUXC_SPDIF_TX_PWM3_OUT		0x06
+		>;
+	};
+
+
+	pinctrl_pwm4: pwm4grp {
+		fsl,pins = <
+			
+			MX8MM_IOMUXC_GPIO1_IO15_PWM4_OUT		0x06
+		>;
+	};
+
 	pinctrl_reg_eth_phy: regethphy {
 		fsl,pins = <
 			MX8MM_IOMUXC_GPIO1_IO07_GPIO1_IO7		0x41

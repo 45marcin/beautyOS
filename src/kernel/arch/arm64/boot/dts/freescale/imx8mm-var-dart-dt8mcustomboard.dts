@@ -300,6 +300,19 @@
 	pinctrl-0 = <&pinctrl_pwm1>;
 };
 
+
+&pwm3 {
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_pwm3>;
+};
+
+&pwm4 {
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_pwm4>;
+};
+
 &snvs_pwrkey {
 	status = "okay";
 };

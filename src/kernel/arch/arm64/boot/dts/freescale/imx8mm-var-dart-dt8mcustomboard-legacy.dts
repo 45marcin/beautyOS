@@ -50,13 +50,13 @@
 		emmc3 { /*cam1 i2c*/
 			label = "cam_1_i2c";
 			gpios = <&gpio5 19 GPIO_ACTIVE_HIGH>;
-			default-state = "on";
+			default-state = "off";
 		};
 
 		emmc32 { /*cam1 i2c*/
 			label = "cam_2_i2c";
 			gpios = <&gpio5 18 GPIO_ACTIVE_HIGH>;
-			default-state = "off";
+			default-state = "on";
 		};
 
 		emmc4 { /*blue*/
@@ -80,13 +80,13 @@
 
 		emmc9 { /*blue*/
 			label = "cam_2_reset";
-			gpios = <&gpio5 26 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio5 26 GPIO_ACTIVE_LOW>;
 			default-state = "on";
 		};
 
 		emmc10 { /*blue*/
 			label = "cam_2_stby";
-			gpios = <&gpio5 27 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio5 27 GPIO_ACTIVE_LOW>;
 			default-state = "off";
 		};
 
@@ -99,7 +99,7 @@
 		emmc8 { 
 			label = "spi_mux_cam_select";
 			gpios = <&gpio3 22 GPIO_ACTIVE_HIGH>;
-			default-state = "on";
+			default-state = "off";
 		};
 
 	};
@@ -189,8 +189,11 @@
 			MX8MM_IOMUXC_I2C3_SCL_GPIO5_IO18		0x1c6
 			MX8MM_IOMUXC_SAI5_RXC_GPIO3_IO20		0x1c6   /*spi mux enable*/
 			MX8MM_IOMUXC_SAI5_RXD1_GPIO3_IO22		0x1c6	/*select spi camera*/
-			MX8MM_IOMUXC_UART3_RXD_GPIO5_IO26		0x1c6	/*cam2 reset*/
+			MX8MM_IOMUXC_UART3_RXD_GPIO5_IO26		0x1c6	/*cam2 reset - odw*/ 
 			MX8MM_IOMUXC_UART3_TXD_GPIO5_IO27		0x1c6	/*cam2_stanby*/
+
+			MX8MM_IOMUXC_SPDIF_RX_GPIO5_IO4			0x1c6	/*on_w_pf*/
+			MX8MM_IOMUXC_GPIO1_IO11_GPIO1_IO11		0x1c6	/*on_uv*/
 		>;
 	};
 
