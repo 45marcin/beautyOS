@@ -134,7 +134,7 @@
 		ti,settle-delay-usec = /bits/ 16 <150>;
 		ti,keep-vref-on;
 		wakeup-source;
-		status = "okay";
+		status = "disabled";
 	};
 
 	/* CAN controller */
@@ -148,7 +148,7 @@
 		interrupts = <6 IRQ_TYPE_EDGE_FALLING>;
 		microchip,rx-int-gpios = <&gpio5 4 GPIO_ACTIVE_LOW>;
 		spi-max-frequency = <20000000>;
-		status = "okay";
+		status = "disabled";
 	};
 
 	/* Test SPI device */
@@ -171,7 +171,7 @@
 
 	/* Capacitive touch controller */
 	ft5x06_ts: ft5x06_ts@38 {
-		status = "okay";
+		status = "disabled";
 		compatible = "edt,edt-ft5206";
 		reg = <0x38>;
 		pinctrl-names = "default";
@@ -185,6 +185,18 @@
 		touchscreen-inverted-y;
 		wakeup-source;
 	};
+
+	
+};
+
+&i2c4 {
+	clock-frequency = <100000>;
+	pinctrl-names = "default", "gpio";
+	pinctrl-0 = <&pinctrl_i2c4>;
+	pinctrl-1 = <&pinctrl_i2c4_gpio>;
+	scl-gpios = <&gpio5 20 GPIO_ACTIVE_HIGH>;
+	sda-gpios = <&gpio5 21 GPIO_ACTIVE_HIGH>;
+	status = "okay";
 
 	ov5640_mipi1: ov5640_mipi1@3c {
 		status = "okay";
@@ -200,8 +212,6 @@
 		assigned-clock-parents = <&clk IMX8MM_CLK_24M>;
 		assigned-clock-rates = <24000000>;
 #endif
-		pwn-gpios = <&pca6408_1 3 GPIO_ACTIVE_HIGH>;
-		rst-gpios = <&pca6408_1 1 GPIO_ACTIVE_LOW>;
 		csi_id = <0>;
 		mclk = <24000000>;
 		mclk_source = <0>;
@@ -222,16 +232,6 @@
 		interrupt-parent = <&gpio1>;
 		interrupts = <15 IRQ_TYPE_EDGE_FALLING>;
 	};
-};
-
-&i2c4 {
-	clock-frequency = <100000>;
-	pinctrl-names = "default", "gpio";
-	pinctrl-0 = <&pinctrl_i2c4>;
-	pinctrl-1 = <&pinctrl_i2c4_gpio>;
-	scl-gpios = <&gpio5 20 GPIO_ACTIVE_HIGH>;
-	sda-gpios = <&gpio5 21 GPIO_ACTIVE_HIGH>;
-	status = "okay";
 
 	pca6408_1: gpio@20 {
 		compatible = "nxp,pcal6408";
@@ -291,7 +291,7 @@
 	clock-names = "pcie", "pcie_aux", "pcie_phy", "pcie_bus";
 	ext_osc = <1>;
 	reset-gpio = <&pca6408_2 3 GPIO_ACTIVE_LOW>;
-	status = "okay";
+	status = "disabled";
 };
 
 &pwm1 {
@@ -319,14 +319,14 @@
 &uart2 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart2>;
-	status = "okay";
+	status = "disabled";
 };
 
 /* Header */
 &uart3 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart3>;
-	status = "okay";
+	status = "disabled";
 };
 
 &usbotg1 {
@@ -337,14 +337,14 @@
 	hnp-disable;
 	srp-disable;
 	adp-disable;
-	status = "okay";
+	status = "disabled";
 };
 
 &usbotg2 {
 	dr_mode = "host";
 	picophy,pre-emp-curr-control = <3>;
 	picophy,dc-vol-level-adjust = <7>;
-	status = "okay";
+	status = "disabled";
 };
 
 /* SD */

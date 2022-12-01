@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+sudo MACHINE=imx8mm-var-dart ./var_make_debian.sh -c kernel
+$ sudo MACHINE=imx8mm-var-dart ./var_make_debian.sh -c module

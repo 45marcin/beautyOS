@@ -7,7 +7,7 @@
 #include "imx8mm-var-dart-dt8mcustomboard.dts"
 
 / {
-	model = "Variscite DART-MX8M-MINI on DT8MCustomBoard 1.x";
+	model = "Variscite DART-MX8M-MINI on BeautyOS board";
 
 	gpio-keys {
 		pinctrl-names = "default";
@@ -74,6 +74,31 @@
 		emmc6 { /*blue*/
 			label = "cam_1_stby";
 			gpios = <&gpio1 22 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+
+		emmc9 { /*blue*/
+			label = "cam_2_reset";
+			gpios = <&gpio5 26 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
+		};
+
+		emmc10 { /*blue*/
+			label = "cam_2_stby";
+			gpios = <&gpio5 27 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+		emmc7 { 
+			label = "spi_mux_enable";
+			gpios = <&gpio3 20 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+		emmc8 { 
+			label = "spi_mux_cam_select";
+			gpios = <&gpio3 22 GPIO_ACTIVE_HIGH>;
 			default-state = "on";
 		};
 
@@ -109,6 +134,15 @@
 	reset-gpio = <&gpio4 7 GPIO_ACTIVE_LOW>;
 };
 
+&i2c2 {
+	battery@36 {
+        compatible = "maxim,max17048";
+        reg = <0x36>;
+        maxim,rcomp = /bits/ 8 <0x56>;
+        /*maxim,alert-low-soc-level = <10>;
+        maxim,double-soc;*/
+    };
+};
 
 
 &i2c4 {
@@ -153,6 +187,10 @@
 			MX8MM_IOMUXC_GPIO1_IO00_GPIO1_IO0		0x1c6	
 			MX8MM_IOMUXC_ENET_TX_CTL_GPIO1_IO22		0x1c6
 			MX8MM_IOMUXC_I2C3_SCL_GPIO5_IO18		0x1c6
+			MX8MM_IOMUXC_SAI5_RXC_GPIO3_IO20		0x1c6   /*spi mux enable*/
+			MX8MM_IOMUXC_SAI5_RXD1_GPIO3_IO22		0x1c6	/*select spi camera*/
+			MX8MM_IOMUXC_UART3_RXD_GPIO5_IO26		0x1c6	/*cam2 reset*/
+			MX8MM_IOMUXC_UART3_TXD_GPIO5_IO27		0x1c6	/*cam2_stanby*/
 		>;
 	};
 
