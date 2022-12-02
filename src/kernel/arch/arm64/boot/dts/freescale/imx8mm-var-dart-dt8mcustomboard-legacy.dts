@@ -14,19 +14,19 @@
 		pinctrl-0 = <&pinctrl_gpio_keys>;
 
 		up {
-			gpios = <&gpio4 18 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio4 10 GPIO_ACTIVE_LOW>;
 		};
 
 		down {
-			gpios = <&gpio4 15 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio4 22 GPIO_ACTIVE_LOW>;
 		};
 
 		home {
-			gpios = <&gpio4 13 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio4 26 GPIO_ACTIVE_LOW>;
 		};
 
 		back {
-			gpios = <&gpio4 6 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio4 23 GPIO_ACTIVE_LOW>;
 		};
 	};
 
@@ -40,23 +40,25 @@
 		emmc2 { /*green*/
 			label = "led_green";
 			gpios = <&gpio4 25 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
 		};
 		
 		emmc3 { /*blue*/
 			label = "led_blue";
 			gpios = <&gpio4 24 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
 		};
 
 		emmc3 { /*cam1 i2c*/
 			label = "cam_1_i2c";
 			gpios = <&gpio5 19 GPIO_ACTIVE_HIGH>;
-			default-state = "off";
+			default-state = "on";
 		};
 
 		emmc32 { /*cam1 i2c*/
 			label = "cam_2_i2c";
 			gpios = <&gpio5 18 GPIO_ACTIVE_HIGH>;
-			default-state = "on";
+			default-state = "off";
 		};
 
 		emmc4 { /*blue*/
@@ -99,7 +101,7 @@
 		emmc8 { 
 			label = "spi_mux_cam_select";
 			gpios = <&gpio3 22 GPIO_ACTIVE_HIGH>;
-			default-state = "off";
+			default-state = "on";
 		};
 
 
@@ -130,6 +132,35 @@
 			gpios = <&gpio3 25 GPIO_ACTIVE_HIGH>;
 			default-state = "off";
 		};
+
+		/*haptics*/
+
+		emmc15 { 
+			label = "vib_motor";
+			gpios = <&gpio4 11 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+		emmc16 { 
+			label = "buzzer";
+			gpios = <&gpio4 20 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+		/*3v3*/
+
+		emmc17 { 
+			label = "3v3_skin";
+			gpios = <&gpio1 13 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+		emmc18 { 
+			label = "3v3_sht35";
+			gpios = <&gpio1 6 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
 
 	};
 
@@ -164,13 +195,33 @@
 };
 
 &i2c2 {
-	battery@36 {
-        compatible = "maxim,max17048";
-        reg = <0x36>;
-        maxim,rcomp = /bits/ 8 <0x56>;
-        /*maxim,alert-low-soc-level = <10>;
-        maxim,double-soc;*/
-    };
+	max17048@36 {
+		compatible = "maxim,max17048";
+		reg = <0x36>;
+		use-ac;
+		alert-threshold = <0>;
+		one-percent-alerts = <0>;
+		valert-max = <0>;
+		valert-min = <0>;
+		vreset-threshold = <0>;
+		vreset-disable = <0>;
+		hib-threshold = <0>;
+		hib-active-threshold = <0>;
+		bits = <0>;
+		rcomp = <0>;
+		rcomp-seg = <0x0000>;
+		soccheck-a = <0>;
+		soccheck-b = <0>;
+		ocvtest = <0>;
+		data-tbl = <0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+			0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+			0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+			0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+			0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+			0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+			0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+			0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00>;
+	};
 };
 
 
@@ -199,10 +250,10 @@
 
 	pinctrl_gpio_keys: keygrp {
 		fsl,pins = <
-			MX8MM_IOMUXC_SAI1_TXD3_GPIO4_IO15		0x1c6
-			MX8MM_IOMUXC_SAI1_TXD6_GPIO4_IO18		0x1c6
-			MX8MM_IOMUXC_SAI1_TXD1_GPIO4_IO13		0x1c6
-			MX8MM_IOMUXC_SAI1_RXD4_GPIO4_IO6		0x1c6
+			MX8MM_IOMUXC_SAI1_TXFS_GPIO4_IO10		0x1c6 /*vol up*/
+			MX8MM_IOMUXC_SAI2_TXD0_GPIO4_IO26		0x1c6 /*home*/
+			MX8MM_IOMUXC_SAI2_RXD0_GPIO4_IO23		0x1c6 /*back*/
+			MX8MM_IOMUXC_SAI2_RXC_GPIO4_IO22		0x1c6 /*vol down*/ /*konflikt z spi */
 		>;
 	};
 
@@ -225,6 +276,13 @@
 			MX8MM_IOMUXC_GPIO1_IO11_GPIO1_IO11		0x1c6	/*on_uv*/
 			MX8MM_IOMUXC_SAI5_RXD3_GPIO3_IO24		0x1c6	/*on_w*/
 			MX8MM_IOMUXC_SAI5_MCLK_GPIO3_IO25		0x1c6	/*on_ir*/
+
+			MX8MM_IOMUXC_SAI1_TXC_GPIO4_IO11		0x1c6	/*vib_motor*/
+			MX8MM_IOMUXC_SAI1_MCLK_GPIO4_IO20		0x1c6	/*buzzer*/
+
+
+			MX8MM_IOMUXC_GPIO1_IO13_GPIO1_IO13		0x1c6	/*3v3_skin*/
+			MX8MM_IOMUXC_GPIO1_IO06_GPIO1_IO6		0x1c6	/*3v3_sht*/
 
 		>;
 	};

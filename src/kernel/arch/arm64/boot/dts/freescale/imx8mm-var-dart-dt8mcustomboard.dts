@@ -39,28 +39,28 @@
 			label = "Up";
 			linux,code = <KEY_UP>;
 			gpios = <&pca6408_1 5 GPIO_ACTIVE_LOW>;
-			wakeup-source;
+			/*wakeup-source;*/
 		};
 
 		down {
 			label = "Down";
 			linux,code = <KEY_DOWN>;
 			gpios = <&pca6408_1 6 GPIO_ACTIVE_LOW>;
-			wakeup-source;
+			/*wakeup-source;*/
 		};
 
 		home {
 			label = "Home";
 			linux,code = <KEY_HOME>;
 			gpios = <&pca6408_1 4 GPIO_ACTIVE_LOW>;
-			wakeup-source;
+			/*wakeup-source;*/
 		};
 
 		back {
 			label = "Back";
 			linux,code = <KEY_BACK>;
 			gpios = <&pca6408_1 7 GPIO_ACTIVE_LOW>;
-			wakeup-source;
+			/*wakeup-source;*/
 		};
 	};
 
@@ -107,9 +107,9 @@
 &ecspi1 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_ecspi1>;
-	cs-gpios = <&gpio5  9 GPIO_ACTIVE_LOW>,
+	cs-gpios = <&gpio5  9 GPIO_ACTIVE_LOW>/*,
 		   <&gpio1 12 GPIO_ACTIVE_LOW>,
-		   <&gpio4 22 GPIO_ACTIVE_LOW>;
+		   <&gpio4 22 GPIO_ACTIVE_LOW>*/;
 	status = "okay";
 
 	/* Resistive touch controller */
@@ -152,8 +152,8 @@
 	};
 
 	/* Test SPI device */
-	spidev@2 {
-		reg = <2>;
+	spidev@0 {
+		reg = <0>;
 		compatible = "var,spidev";
 		spi-max-frequency = <12000000>;
 		status = "okay";
@@ -314,7 +314,7 @@
 };
 
 &snvs_pwrkey {
-	status = "disabled";
+	status = "enabled";
 };
 
 &snvs_rtc {
@@ -380,7 +380,7 @@
 			MX8MM_IOMUXC_ECSPI1_MISO_ECSPI1_MISO		0x13
 			MX8MM_IOMUXC_ECSPI1_SS0_GPIO5_IO9		0x13
 			MX8MM_IOMUXC_GPIO1_IO12_GPIO1_IO12		0x13
-			MX8MM_IOMUXC_SAI2_RXC_GPIO4_IO22		0x13
+			/*MX8MM_IOMUXC_SAI2_RXC_GPIO4_IO22		0x13*/
 		>;
 	};
 
