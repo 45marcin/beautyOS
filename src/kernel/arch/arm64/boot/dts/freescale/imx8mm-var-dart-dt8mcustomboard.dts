@@ -295,26 +295,26 @@
 };
 
 &pwm1 {
-	status = "okay";
+	status = "okay"; /*led_dim_w*/
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_pwm1>;
 };
 
 
 &pwm3 {
-	status = "okay";
+	status = "okay";/*led_dim_wpf*/
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_pwm3>;
 };
 
 &pwm4 {
-	status = "okay";
+	status = "okay";/*led_dim_uv*/
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_pwm4>;
 };
 
 &snvs_pwrkey {
-	status = "okay";
+	status = "disabled";
 };
 
 &snvs_rtc {

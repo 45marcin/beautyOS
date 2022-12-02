@@ -32,21 +32,21 @@
 
 	leds {
 		emmc { /*red*/
-			label = "eMMC2";
+			label = "led_red";
 			linux,default-trigger = "heartbeat";
 			gpios = <&gpio4 27 GPIO_ACTIVE_HIGH>;
 		};
 		
 		emmc2 { /*green*/
-			label = "eMMC3";
+			label = "led_green";
 			gpios = <&gpio4 25 GPIO_ACTIVE_HIGH>;
 		};
-		/*
-		emmc3 { /*blue*//*
-			label = "eMMC4";
+		
+		emmc3 { /*blue*/
+			label = "led_blue";
 			gpios = <&gpio4 24 GPIO_ACTIVE_HIGH>;
 		};
-*/
+
 		emmc3 { /*cam1 i2c*/
 			label = "cam_1_i2c";
 			gpios = <&gpio5 19 GPIO_ACTIVE_HIGH>;
@@ -99,6 +99,35 @@
 		emmc8 { 
 			label = "spi_mux_cam_select";
 			gpios = <&gpio3 22 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+
+
+		/*leds*/
+
+
+		emmc11 { 
+			label = "on_w_pf";
+			gpios = <&gpio5 4 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+		emmc12 { 
+			label = "on_uv";
+			gpios = <&gpio1 11 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+		emmc13 { 
+			label = "on_w";
+			gpios = <&gpio3 24 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+		emmc14 { 
+			label = "on_ir";
+			gpios = <&gpio3 25 GPIO_ACTIVE_HIGH>;
 			default-state = "off";
 		};
 
