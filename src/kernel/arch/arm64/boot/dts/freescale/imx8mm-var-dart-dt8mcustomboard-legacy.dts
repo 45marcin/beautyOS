@@ -177,9 +177,7 @@
 	battery@36 {
         compatible = "maxim,max17048";
         reg = <0x36>;
-        maxim,rcomp = /bits/ 8 <0x56>;
         maxim,alert-low-soc-level = <10>;
-        maxim,double-soc;
     };
 
 	
