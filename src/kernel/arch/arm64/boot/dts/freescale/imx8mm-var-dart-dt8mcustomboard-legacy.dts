@@ -78,30 +78,69 @@
 		};
 
 
-		emmc9 { /*blue*/
+		emmc7 { /*blue*/
 			label = "cam_2_reset";
 			gpios = <&gpio5 26 GPIO_ACTIVE_LOW>;
 			default-state = "on";
 		};
 
-		emmc10 { /*blue*/
+		emmc8 { /*blue*/
 			label = "cam_2_stby";
 			gpios = <&gpio5 27 GPIO_ACTIVE_LOW>;
 			default-state = "off";
 		};
 
-		emmc7 { 
+		emmc9 { 
 			label = "spi_mux_enable";
 			gpios = <&gpio3 20 GPIO_ACTIVE_HIGH>;
 			default-state = "off";
 		};
 
-		emmc8 { 
+		emmc10 { 
 			label = "spi_mux_cam_select";
 			gpios = <&gpio3 22 GPIO_ACTIVE_HIGH>;
 			default-state = "off";
 		};
 
+
+		emmc11 { 
+			label = "3v3_sht";
+			gpios = <&gpio1 6 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
+		};
+
+		emmc12 { 
+			label = "led_on";
+			gpios = <&gpio3 19 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+
+		
+
+		emmc13 { 
+			label = "on_w_pf";
+			gpios = <&gpio5 4 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+		emmc14 { 
+			label = "on_uv";
+			gpios = <&gpio1 11 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+		emmc15 { 
+			label = "on_w";
+			gpios = <&gpio3 24 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+		emmc16 { 
+			label = "on_ir";
+			gpios = <&gpio3 25 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
 	};
 
 	can0_osc: can0_osc {
@@ -139,8 +178,21 @@
         compatible = "maxim,max17048";
         reg = <0x36>;
         maxim,rcomp = /bits/ 8 <0x56>;
-        /*maxim,alert-low-soc-level = <10>;
-        maxim,double-soc;*/
+        maxim,alert-low-soc-level = <10>;
+        maxim,double-soc;
+    };
+
+	
+	sht35_1@44 {
+		compatible = "sensirion,sht3x";
+		reg = <0x44>;
+		status = "okay";
+    };
+	
+	sht35_1@45 {
+		compatible = "sensirion,sht3x";
+		reg = <0x45>;
+		status = "okay";
     };
 };
 
@@ -192,10 +244,15 @@
 			MX8MM_IOMUXC_UART3_RXD_GPIO5_IO26		0x1c6	/*cam2 reset - odw*/ 
 			MX8MM_IOMUXC_UART3_TXD_GPIO5_IO27		0x1c6	/*cam2_stanby*/
 
+			MX8MM_IOMUXC_SAI5_RXFS_GPIO3_IO19		0x1c6	/*led_supply*/
+
 			MX8MM_IOMUXC_SPDIF_RX_GPIO5_IO4			0x1c6	/*on_w_pf*/
 			MX8MM_IOMUXC_GPIO1_IO11_GPIO1_IO11		0x1c6	/*on_uv*/
 			MX8MM_IOMUXC_SAI5_RXD3_GPIO3_IO24		0x1c6	/*on_w*/
 			MX8MM_IOMUXC_SAI5_MCLK_GPIO3_IO25		0x1c6	/*on_ir*/
+
+
+			MX8MM_IOMUXC_GPIO1_IO06_GPIO1_IO6		0x1c6	/*3v3_sht*/
 
 		>;
 	};

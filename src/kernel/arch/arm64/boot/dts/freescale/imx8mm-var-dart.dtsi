@@ -230,7 +230,6 @@
 
 	pinctrl_pwm3: pwm3grp {
 		fsl,pins = <
-			
 			MX8MM_IOMUXC_SPDIF_TX_PWM3_OUT		0x06
 		>;
 	};
@@ -386,7 +385,7 @@
 };
 
 &i2c1 {
-	clock-frequency = <100000>;
+	clock-frequency = <50000>;
 	pinctrl-names = "default", "gpio";
 	pinctrl-0 = <&pinctrl_i2c1>;
 	pinctrl-1 = <&pinctrl_i2c1_gpio>;
