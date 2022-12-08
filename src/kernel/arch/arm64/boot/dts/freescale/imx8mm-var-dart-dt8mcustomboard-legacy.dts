@@ -14,19 +14,19 @@
 		pinctrl-0 = <&pinctrl_gpio_keys>;
 
 		up {
-			gpios = <&gpio4 18 GPIO_ACTIVE_LOW>;
-		};
-
-		down {
-			gpios = <&gpio4 15 GPIO_ACTIVE_LOW>;
-		};
-
-		home {
-			gpios = <&gpio4 13 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio4 22 GPIO_ACTIVE_LOW>;
 		};
 
 		back {
-			gpios = <&gpio4 6 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio4 23 GPIO_ACTIVE_LOW>;
+		};
+
+		home {
+			gpios = <&gpio4 26 GPIO_ACTIVE_LOW>;
+		};
+
+		down {
+			gpios = <&gpio4 10 GPIO_ACTIVE_LOW>;
 		};
 	};
 
@@ -141,6 +141,19 @@
 			gpios = <&gpio3 25 GPIO_ACTIVE_HIGH>;
 			default-state = "off";
 		};
+
+		vib_motor { 
+			label = "vib_motor";
+			gpios = <&gpio4 11 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+		buzz { 
+			label = "buzz";
+			gpios = <&gpio4 20 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
 	};
 
 	can0_osc: can0_osc {
@@ -220,10 +233,10 @@
 
 	pinctrl_gpio_keys: keygrp {
 		fsl,pins = <
-			MX8MM_IOMUXC_SAI1_TXD3_GPIO4_IO15		0x1c6
-			MX8MM_IOMUXC_SAI1_TXD6_GPIO4_IO18		0x1c6
-			MX8MM_IOMUXC_SAI1_TXD1_GPIO4_IO13		0x1c6
-			MX8MM_IOMUXC_SAI1_RXD4_GPIO4_IO6		0x1c6
+			MX8MM_IOMUXC_SAI2_RXC_GPIO4_IO22		0x1c6	/*SW_VOL_DOWN*/
+			MX8MM_IOMUXC_SAI2_RXD0_GPIO4_IO23		0X1c6	/*SW_BACK*/
+			MX8MM_IOMUXC_SAI2_TXD0_GPIO4_IO26		0x1c6	/*SW_HOME*/
+			MX8MM_IOMUXC_SAI1_TXFS_GPIO4_IO10		0x1c6	/*SW_VOL_UP*/
 		>;
 	};
 
@@ -235,6 +248,7 @@
             MX8MM_IOMUXC_SAI2_TXFS_GPIO4_IO24		0x1c6
 			MX8MM_IOMUXC_SAI5_RXD0_GPIO3_IO21		0x1c6
 			MX8MM_IOMUXC_GPIO1_IO00_GPIO1_IO0		0x1c6	
+	
 			MX8MM_IOMUXC_ENET_TX_CTL_GPIO1_IO22		0x1c6
 			MX8MM_IOMUXC_I2C3_SCL_GPIO5_IO18		0x1c6
 			MX8MM_IOMUXC_SAI5_RXC_GPIO3_IO20		0x1c6   /*spi mux enable*/
@@ -252,6 +266,14 @@
 
 			MX8MM_IOMUXC_GPIO1_IO06_GPIO1_IO6		0x1c6	/*3v3_sht*/
 
+
+			MX8MM_IOMUXC_SAI1_TXC_GPIO4_IO11		0x1c6	/*VIB_MOTOR*/
+			MX8MM_IOMUXC_SAI1_MCLK_GPIO4_IO20		0x1c6	/*BUZZ*/
+
+
+			MX8MM_IOMUXC_GPIO1_IO13_GPIO1_IO13		0x1c6	/*3v3_sknin_on*/
+
+			
 		>;
 	};
 
