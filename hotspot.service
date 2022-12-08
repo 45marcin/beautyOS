@@ -1,0 +1,13 @@
+[Unit]
+Description=Create AP Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=nmcli dev wifi hotspot ifname wlan0 ssid BeautyOS password "123wow890"
+KillSignal=SIGINT
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
