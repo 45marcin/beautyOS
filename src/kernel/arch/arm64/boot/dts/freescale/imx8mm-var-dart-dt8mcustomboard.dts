@@ -143,11 +143,11 @@
 &ecspi1 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_ecspi1>;
-	cs-gpios = <&gpio5  9 GPIO_ACTIVE_LOW>,
-		   <&gpio1 12 GPIO_ACTIVE_LOW>;
+	cs-gpios = <&gpio5  9 GPIO_ACTIVE_LOW>;
 	status = "okay";
 
 	/* Resistive touch controller */
+	/*
 	ads7846@0 {
 		reg = <0>;
 		compatible = "ti,ads7846";
@@ -171,8 +171,9 @@
 		wakeup-source;
 		status = "disabled";
 	};
-
+*/
 	/* CAN controller */
+	/*
 	can0: can@1 {
 		compatible = "microchip,mcp251xfd";
 		reg = <1>;
@@ -185,10 +186,11 @@
 		spi-max-frequency = <20000000>;
 		status = "disabled";
 	};
+	*/
 
 	/* Test SPI device */
-	spidev@2 {
-		reg = <2>;
+	spidev@0 {
+		reg = <0>;
 		compatible = "var,spidev";
 		spi-max-frequency = <12000000>;
 		status = "okay";
@@ -414,7 +416,6 @@
 			MX8MM_IOMUXC_ECSPI1_MOSI_ECSPI1_MOSI		0x13
 			MX8MM_IOMUXC_ECSPI1_MISO_ECSPI1_MISO		0x13
 			MX8MM_IOMUXC_ECSPI1_SS0_GPIO5_IO9		0x13
-			MX8MM_IOMUXC_GPIO1_IO12_GPIO1_IO12		0x13
 		>;
 	};
 

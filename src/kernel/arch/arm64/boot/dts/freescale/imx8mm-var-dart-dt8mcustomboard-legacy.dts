@@ -169,11 +169,11 @@
 
 	/delete-node/ extcon_usb1;
 };
-
+/*
 &can0 {
 	spi-max-frequency = <10000000>;
 	/delete-property/ microchip,rx-int-gpios;
-};
+};*/
 
 &ft5x06_ts {
 	reset-gpios = <&gpio4 5 GPIO_ACTIVE_LOW>;
@@ -198,8 +198,9 @@
         compatible = "maxim,max17048";
         reg = <0x36>;
         maxim,alert-low-soc-level = <10>;
+		status="disabled";
     };
-
+	/*
 	
 	sht35_1@44 {
 		compatible = "sensirion,sht3x";
@@ -212,6 +213,7 @@
 		reg = <0x45>;
 		status = "okay";
     };
+	*/
 };
 
 
