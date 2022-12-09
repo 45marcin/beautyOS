@@ -154,6 +154,13 @@
 			default-state = "off";
 		};
 
+
+		afee { 
+			label = "3v3_afe";
+			gpios = <&gpio1 13 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
+		};
+
 	};
 
 	can0_osc: can0_osc {
